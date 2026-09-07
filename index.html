@@ -2,35 +2,54 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="my-games 小游戏集合">
-  <title>小游戏集合</title>
-  <link rel="stylesheet" href="home.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#162b55">
+  <meta name="description" content="接金币，接住更多金币，挑战最高分。">
+  <title>接金币 | Catch the Coins</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="home-shell">
-    <section class="home-content" aria-labelledby="home-title">
-      <header class="home-heading">
-        <p class="home-kicker">MY LITTLE ARCADE</p>
-        <h1 id="home-title">选择一个游戏</h1>
-        <p>两场轻松的挑战，随时开始。</p>
+  <main class="page-shell">
+    <section class="game-wrap" aria-label="接金币游戏">
+      <header class="topbar">
+        <div class="brand"><span class="brand-coin" aria-hidden="true">$</span><span>接金币</span></div>
+        <div class="top-actions">
+          <button class="icon-button" id="sound-button" type="button" aria-label="切换音效" aria-pressed="true">♫</button>
+          <button class="icon-button" id="pause-button" type="button" aria-label="暂停游戏" disabled>Ⅱ</button>
+        </div>
       </header>
 
-      <nav class="game-grid" aria-label="游戏列表">
-        <a class="game-card puzzle-card" href="puzzle.html">
-          <span class="game-icon" aria-hidden="true">🧩</span>
-          <span class="game-info"><strong>图片拼图</strong><small>上传图片，拼回完整画面</small></span>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-        <a class="game-card space-card" href="asteroid.html">
-          <span class="game-icon" aria-hidden="true">🚀</span>
-          <span class="game-info"><strong>星际躲避：流星雨</strong><small>驾驶飞船，穿越危险星海</small></span>
-          <span class="card-arrow" aria-hidden="true">→</span>
-        </a>
-      </nav>
+      <div class="scorebar" aria-live="polite">
+        <div><span class="label">得分</span><strong id="score">0000</strong></div>
+        <div class="lives" aria-label="剩余生命"><span class="label">生命</span><span id="lives" class="hearts">♥ ♥ ♥</span></div>
+      </div>
 
-      <footer class="home-footer"><span></span> 选择卡片开始游戏 <span></span></footer>
+      <div class="playfield-shell">
+        <canvas id="game-canvas" width="420" height="700" aria-label="游戏区域"></canvas>
+        <div id="start-screen" class="game-overlay">
+          <div class="overlay-art" aria-hidden="true">✦</div>
+          <p class="overline">CATCH THE COINS</p>
+          <h1>接住每一枚<br><em>闪闪金币</em></h1>
+          <p class="instructions">按住屏幕左侧或右侧移动小玩家<br>也可以拖动角色来接金币</p>
+          <button id="start-button" class="primary-button" type="button"><span>开始游戏</span><b aria-hidden="true">→</b></button>
+        </div>
+        <div id="pause-screen" class="game-overlay is-hidden">
+          <div class="pause-mark" aria-hidden="true">Ⅱ</div>
+          <p class="overline">PAUSED</p>
+          <h2>休息一下</h2>
+          <button id="resume-button" class="primary-button" type="button"><span>继续游戏</span><b aria-hidden="true">→</b></button>
+        </div>
+        <div id="game-over-screen" class="game-overlay is-hidden">
+          <div class="overlay-art" aria-hidden="true">✧</div>
+          <p class="overline">GAME OVER</p>
+          <h2>这次接到 <strong id="final-score">0</strong> 分</h2>
+          <p class="instructions">金币还在闪闪发光，<br>再来一次创造新纪录吧。</p>
+          <button id="restart-button" class="primary-button" type="button"><span>重新开始</span><b aria-hidden="true">↻</b></button>
+        </div>
+      </div>
+      <p class="control-hint"><span>←</span> 按住左右两侧移动 <span>→</span></p>
     </section>
   </main>
+  <script src="script.js"></script>
 </body>
 </html>
