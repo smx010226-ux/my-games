@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="description" content="星际躲避：流星雨 Canvas 网页小游戏">
+  <title>星际躲避：流星雨</title>
+  <link rel="stylesheet" href="asteroid.css">
+</head>
+<body>
+  <main class="space-page">
+    <section class="game-wrap" aria-label="星际躲避流星雨游戏">
+      <header class="hud">
+        <div class="brand-mark"><span class="brand-orbit"></span><span>星际躲避</span></div>
+        <div class="stat-group">
+          <div class="stat"><span class="stat-label">SCORE</span><strong id="score">0</strong></div>
+          <div class="stat lives-stat"><span class="stat-label">生命</span><strong id="lives">❤❤❤</strong></div>
+          <div class="stat"><span class="stat-label">BEST</span><strong id="best-score">0</strong></div>
+        </div>
+      </header>
+
+      <div id="game-stage" class="game-stage">
+        <canvas id="game-canvas" aria-label="游戏画面"></canvas>
+        <div id="start-screen" class="overlay-screen">
+          <div class="planet-icon" aria-hidden="true"><span></span></div>
+          <p class="kicker">DEEP SPACE / 01</p>
+          <h1>流星雨</h1>
+          <p class="intro">驾驶飞船穿过无尽星海<br>拖动飞船，躲开迎面而来的流星</p>
+          <button id="start-button" class="primary-button" type="button">开始任务 <span>→</span></button>
+        </div>
+        <div id="game-over-screen" class="overlay-screen is-hidden">
+          <p class="kicker">MISSION COMPLETE</p>
+          <h2>游戏结束</h2>
+          <p class="final-label">本次得分</p>
+          <div id="final-score" class="final-score">0</div>
+          <p id="new-record" class="new-record is-hidden">✦ 刷新最高分 ✦</p>
+          <button id="restart-button" class="primary-button" type="button">重新开始 <span>↻</span></button>
+        </div>
+      </div>
+      <p class="control-hint"><span>✦</span> 拖动屏幕控制飞船 <i></i> 收集能量，开启护盾</p>
+    </section>
+  </main>
+  <script src="asteroid.js"></script>
+</body>
+</html>

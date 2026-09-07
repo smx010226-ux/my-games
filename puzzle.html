@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="3×3 图片拼图小游戏">
+  <title>3×3 图片拼图</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="game-card" aria-labelledby="game-title">
+      <div class="game-heading">
+        <p class="eyebrow">PICTURE PUZZLE</p>
+        <h1 id="game-title">3×3 图片拼图</h1>
+        <p class="subtitle">上传一张图片，把它拼回原来的样子。</p>
+      </div>
+      <div class="toolbar" aria-label="游戏操作">
+        <label class="upload-button" for="image-input"><span aria-hidden="true">＋</span>选择图片</label>
+        <input id="image-input" type="file" accept="image/*">
+        <button id="restart-button" class="restart-button" type="button" disabled><span aria-hidden="true">↻</span>重新开始</button>
+      </div>
+      <p id="status-message" class="status-message" role="status">请先选择一张图片开始游戏</p>
+      <div id="puzzle-board" class="puzzle-board is-empty" aria-label="3乘3拼图区域">
+        <div class="empty-state"><span class="empty-icon" aria-hidden="true">▦</span><span>你的图片会出现在这里</span></div>
+      </div>
+      <div class="game-tip"><span class="tip-dot" aria-hidden="true"></span>拖动拼图块，与相邻或任意位置交换</div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
