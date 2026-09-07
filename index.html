@@ -2,54 +2,32 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#162b55">
-  <meta name="description" content="接金币，接住更多金币，挑战最高分。">
-  <title>接金币 | Catch the Coins</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1117">
+  <meta name="description" content="最后一格：每一步，都会改变周围。">
+  <title>最后一格 | THE LAST CELL</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="page-shell">
-    <section class="game-wrap" aria-label="接金币游戏">
-      <header class="topbar">
-        <div class="brand"><span class="brand-coin" aria-hidden="true">$</span><span>接金币</span></div>
-        <div class="top-actions">
-          <button class="icon-button" id="sound-button" type="button" aria-label="切换音效" aria-pressed="true">♫</button>
-          <button class="icon-button" id="pause-button" type="button" aria-label="暂停游戏" disabled>Ⅱ</button>
-        </div>
-      </header>
-
-      <div class="scorebar" aria-live="polite">
-        <div><span class="label">得分</span><strong id="score">0000</strong></div>
-        <div class="lives" aria-label="剩余生命"><span class="label">生命</span><span id="lives" class="hearts">♥ ♥ ♥</span></div>
-      </div>
-
-      <div class="playfield-shell">
-        <canvas id="game-canvas" width="420" height="700" aria-label="游戏区域"></canvas>
-        <div id="start-screen" class="game-overlay">
-          <div class="overlay-art" aria-hidden="true">✦</div>
-          <p class="overline">CATCH THE COINS</p>
-          <h1>接住每一枚<br><em>闪闪金币</em></h1>
-          <p class="instructions">按住屏幕左侧或右侧移动小玩家<br>也可以拖动角色来接金币</p>
-          <button id="start-button" class="primary-button" type="button"><span>开始游戏</span><b aria-hidden="true">→</b></button>
-        </div>
-        <div id="pause-screen" class="game-overlay is-hidden">
-          <div class="pause-mark" aria-hidden="true">Ⅱ</div>
-          <p class="overline">PAUSED</p>
-          <h2>休息一下</h2>
-          <button id="resume-button" class="primary-button" type="button"><span>继续游戏</span><b aria-hidden="true">→</b></button>
-        </div>
-        <div id="game-over-screen" class="game-overlay is-hidden">
-          <div class="overlay-art" aria-hidden="true">✧</div>
-          <p class="overline">GAME OVER</p>
-          <h2>这次接到 <strong id="final-score">0</strong> 分</h2>
-          <p class="instructions">金币还在闪闪发光，<br>再来一次创造新纪录吧。</p>
-          <button id="restart-button" class="primary-button" type="button"><span>重新开始</span><b aria-hidden="true">↻</b></button>
-        </div>
-      </div>
-      <p class="control-hint"><span>←</span> 按住左右两侧移动 <span>→</span></p>
+  <main class="app-shell">
+    <header class="site-header">
+      <button class="back-button is-hidden" id="back-button" type="button" aria-label="返回首页">← <span>返回</span></button>
+      <a class="wordmark" href="#home" aria-label="最后一格首页"><span class="mark" aria-hidden="true"></span><span>最后一格</span></a>
+      <button class="sound-button" id="sound-button" type="button" aria-label="切换声音" aria-pressed="true">声 · 开</button>
+    </header>
+    <section id="home-screen" class="screen home-screen">
+      <div class="hero-copy"><p class="eyebrow">THE LAST CELL</p><h1>最后一格</h1><p class="tagline">每一步，都会改变周围。</p></div>
+      <div class="home-actions"><button class="action-button primary" data-mode="campaign" type="button"><span>开始闯关</span><b>↗</b></button><button class="action-button" data-mode="free" type="button"><span>自由挑战</span><b>⌘</b></button><button class="action-button" data-mode="daily" type="button"><span>每日挑战</span><b>◇</b></button></div>
+      <div class="home-stats"><div><span>最高关卡</span><strong id="home-level">还没有记录</strong></div><div><span>最佳成绩</span><strong id="home-best">还没有记录</strong></div><div><span>连续完成</span><strong id="home-streak">还没有记录</strong></div></div>
     </section>
-  </main>
-  <script src="script.js"></script>
+    <section id="select-screen" class="screen select-screen is-hidden"><div class="section-heading"><p class="eyebrow" id="select-eyebrow">SELECT LEVEL</p><h2 id="select-title">选择关卡</h2></div><div id="level-groups" class="level-groups"></div></section>
+    <section id="game-screen" class="screen game-screen is-hidden">
+      <div class="game-heading"><div><p class="eyebrow" id="game-mode-label">CAMPAIGN</p><h2 id="level-title">第 1 关</h2></div><div class="game-metrics"><span>步数 <strong id="moves">0</strong></span><span>最佳 <strong id="best">—</strong></span></div></div>
+      <div class="rule-line"><span id="board-size">4 × 4</span><span id="level-difficulty">初见</span></div><div id="board" class="board" role="grid" aria-label="益智棋盘"></div>
+      <div class="game-tools"><button class="tool-button" id="restart-button" type="button"><span class="tool-icon">↻</span>重新开始</button><button class="tool-button" id="hint-button" type="button"><span class="tool-icon">✦</span>提示：<span id="hint-count">3 / 3</span></button><button class="tool-button" id="pause-button" type="button"><span class="tool-icon">Ⅱ</span>暂停</button></div><p class="game-note">点亮的格子会改变上下左右。让所有格子归于安静。</p>
+    </section>
+    <div id="pause-overlay" class="modal is-hidden" role="dialog" aria-modal="true"><div class="modal-panel"><p class="eyebrow">PAUSED</p><h2>先停在这里</h2><button class="action-button primary" id="resume-button" type="button"><span>继续游戏</span><b>→</b></button></div></div>
+    <div id="result-overlay" class="modal is-hidden" role="dialog" aria-modal="true"><div class="modal-panel result-panel"><p class="eyebrow">PUZZLE COMPLETE</p><div id="stars" class="stars">★★★</div><h2>完成！</h2><p id="result-copy"></p><p id="result-message" class="result-message"></p><div class="result-actions"><button class="action-button primary" id="again-button" type="button"><span>再玩一次</span><b>↻</b></button><button class="action-button" id="next-button" type="button"><span>下一关</span><b>→</b></button></div></div></div>
+  </main><script src="script.js"></script>
 </body>
 </html>
