@@ -1,0 +1,154 @@
+
+:root {
+  --pink: #ff8fbd;
+  --pink-light: #fff0f6;
+  --mint: #a5ead1;
+  --text: #74445f;
+  --gap: 5px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: linear-gradient(145deg, #fff2f8, #edfff7);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 18px #e8bfd433;
+}
+
+.title {
+  font-size: 23px;
+  font-weight: 800;
+  color: #ed6ca5;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.score {
+  padding: 9px 13px;
+  border-radius: 12px;
+  background: var(--pink-light);
+  font-weight: 700;
+}
+
+.btn {
+  border: 0;
+  border-radius: 12px;
+  padding: 10px 16px;
+  color: #69455d;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--pink), var(--mint));
+  cursor: pointer;
+  box-shadow: 0 4px 10px #d9b7d444;
+}
+
+.btn:hover {
+  filter: brightness(1.04);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  padding: 22px 12px;
+}
+
+.board {
+  width: min(640px, 96vw);
+  aspect-ratio: 1;
+  padding: var(--gap);
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: var(--gap);
+  border: 2px solid #ffffff;
+  border-radius: 20px;
+  background: #f8fffc;
+  box-shadow: 0 12px 32px #c4a9c433;
+}
+
+.cell {
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25%;
+  background: #edf8f3;
+}
+
+.candy {
+  width: 78%;
+  height: 78%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: clamp(10px, 3vw, 27px);
+  box-shadow:
+    inset 0 -5px 8px #00000010,
+    0 3px 6px #00000012;
+}
+
+.candy-0 {
+  background: linear-gradient(145deg, #ffc4df, #ff75ad);
+}
+
+.candy-1 {
+  background: linear-gradient(145deg, #ffe0b7, #ffad72);
+}
+
+.candy-2 {
+  background: linear-gradient(145deg, #c9f9df, #72d9b1);
+}
+
+.candy-3 {
+  background: linear-gradient(145deg, #d4e5ff, #8db8ff);
+}
+
+.candy-4 {
+  background: linear-gradient(145deg, #fff2bd, #f6d56e);
+}
+
+.footer {
+  padding: 10px 16px 28px;
+  text-align: center;
+  color: #99788e;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: 14px;
+  }
+
+  .title {
+    font-size: 19px;
+  }
+
+  .board {
+    gap: 3px;
+    padding: 4px;
+  }
+}
